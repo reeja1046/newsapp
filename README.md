@@ -80,6 +80,6 @@ The app displays the following information from each article:
 
 | Splash Screen                  | Signup Screen                | Home - NewsFeed              | Home - Bookmarks             | Article View                 |
 |-------------------------------|-----------------------------|-----------------------------|-----------------------------|------------------------------|
-| ![Splash Screen](screenshots/splash.png) | ![Signup Screen](screenshots/signup.png) | ![NewsFeed](screenshots/newsfeed.png) | ![Bookmarks](screenshots/bookmarks.png) | ![Article View](screenshots/article_view.png) |
+| ![Splash Screen](screenshots/splashscreen.png) | ![Signup Screen](screenshots/signup.png) | ![NewsFeed](screenshots/newsfeed.png) | ![Bookmarks](screenshots/bookmarks.png) | ![Article View](screenshots/article_view.png) |
 
  

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:newsapp/constant/colors.dart';
-import 'package:newsapp/controller/provider.dart';
+import 'package:newsapp/controller/bookmark_provider.dart';
 import 'package:newsapp/controller/service.dart';
 import 'package:newsapp/model/model.dart';
 import 'package:newsapp/view/webview.dart';
@@ -73,40 +73,48 @@ class _HomeScreenState extends State<HomeScreen>
                 margin: const EdgeInsets.all(10),
                 child: ListTile(
                   contentPadding: const EdgeInsets.all(8),
-                 leading: SizedBox(
-  width: 80,
-  height: 80,
-  child: Image.network(
-    article.imageUrl,
-    fit: BoxFit.cover,
-    loadingBuilder: (context, child, loadingProgress) {
-      if (loadingProgress == null) {
-        // Image is fully loaded
-        return child;
-      }
-      // While loading, show CircularProgressIndicator centered
-      return Center(
-        child: CircularProgressIndicator(
-          value: loadingProgress.expectedTotalBytes != null
-              ? loadingProgress.cumulativeBytesLoaded / loadingProgress.expectedTotalBytes!
-              : null,
-        ),
-      );
-    },
-    errorBuilder: (context, error, stackTrace) =>
-        const Icon(Icons.broken_image),
-  ),
-),
-
-                  title: Text(article.title,
-                      maxLines: 2, overflow: TextOverflow.ellipsis,style: TextStyle(fontWeight: FontWeight.bold),),
+                  leading: SizedBox(
+                    width: 80,
+                    height: 80,
+                    child: Image.network(
+                      article.imageUrl,
+                      fit: BoxFit.cover,
+                      loadingBuilder: (context, child, loadingProgress) {
+                        if (loadingProgress == null) {
+                          // Image is fully loaded
+                          return child;
+                        }
+                        // While loading, show CircularProgressIndicator centered
+                        return Center(
+                          child: CircularProgressIndicator(
+                            value: loadingProgress.expectedTotalBytes != null
+                                ? loadingProgress.cumulativeBytesLoaded /
+                                    loadingProgress.expectedTotalBytes!
+                                : null,
+                          ),
+                        );
+                      },
+                      errorBuilder: (context, error, stackTrace) =>
+                          const Icon(Icons.broken_image),
+                    ),
+                  ),
+                  title: Text(
+                    article.title,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
                   subtitle: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(article.description,
-                          maxLines: 2, overflow: TextOverflow.ellipsis),
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(color: AppColors.textColor)),
                       Text(
-                          '${article.sourceName} • ${DateFormat("d MMMM, y").format(article.publishedAt)}'),
+                          '${article.sourceName} • ${DateFormat("d MMMM, y").format(article.publishedAt)}',
+                          style: TextStyle(
+                              color: const Color.fromARGB(255, 61, 61, 61))),
                     ],
                   ),
                   trailing: Consumer<BookmarkProvider>(
@@ -161,9 +169,13 @@ class _HomeScreenState extends State<HomeScreen>
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(article.description,
-                        maxLines: 2, overflow: TextOverflow.ellipsis),
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(color: AppColors.textColor)),
                     Text(
-                        '${article.sourceName} • ${DateFormat("d MMMM, y").format(article.publishedAt)}'),
+                        '${article.sourceName} • ${DateFormat("d MMMM, y").format(article.publishedAt)}',
+                        style: TextStyle(
+                            color: const Color.fromARGB(255, 61, 61, 61))),
                   ],
                 ),
                 trailing: IconButton(
