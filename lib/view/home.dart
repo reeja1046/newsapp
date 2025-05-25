@@ -73,16 +73,31 @@ class _HomeScreenState extends State<HomeScreen>
                 margin: const EdgeInsets.all(10),
                 child: ListTile(
                   contentPadding: const EdgeInsets.all(8),
-                  leading: SizedBox(
-                    width: 80,
-                    height: 80,
-                    child: Image.network(
-                      article.imageUrl,
-                      fit: BoxFit.cover,
-                      errorBuilder: (context, error, stackTrace) =>
-                          const Icon(Icons.broken_image),
-                    ),
-                  ),
+                 leading: SizedBox(
+  width: 80,
+  height: 80,
+  child: Image.network(
+    article.imageUrl,
+    fit: BoxFit.cover,
+    loadingBuilder: (context, child, loadingProgress) {
+      if (loadingProgress == null) {
+        // Image is fully loaded
+        return child;
+      }
+      // While loading, show CircularProgressIndicator centered
+      return Center(
+        child: CircularProgressIndicator(
+          value: loadingProgress.expectedTotalBytes != null
+              ? loadingProgress.cumulativeBytesLoaded / loadingProgress.expectedTotalBytes!
+              : null,
+        ),
+      );
+    },
+    errorBuilder: (context, error, stackTrace) =>
+        const Icon(Icons.broken_image),
+  ),
+),
+
                   title: Text(article.title,
                       maxLines: 2, overflow: TextOverflow.ellipsis,style: TextStyle(fontWeight: FontWeight.bold),),
                   subtitle: Column(
