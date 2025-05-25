@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:newsapp/controller/provider.dart';
+import 'package:newsapp/view/home.dart';
+import 'package:newsapp/view/signup.dart';
 import 'package:newsapp/view/splash.dart';
 import 'package:provider/provider.dart';
 
@@ -19,7 +21,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: "NewsApp",
         debugShowCheckedModeBanner: false,
-        home: SplashScreen(),
+        home: HomeScreen(),
       ),
     );
   }

@@ -22,16 +22,19 @@ class _WebViewScreenState extends State<WebViewScreen> {
       ..setNavigationDelegate(
         NavigationDelegate(
           onPageStarted: (url) {
+            print('Page started loading: $url');
             setState(() {
               isLoading = true;
             });
           },
-          // onPageFinished: (url) {
-          //   setState(() {
-          //     isLoading = false;
-          //   });
-          // },
+          onPageFinished: (url) {
+            print('Page finished loading: $url');
+            setState(() {
+              isLoading = false;
+            });
+          },
           onWebResourceError: (error) {
+            print('Page loading error: ${error.description}');
             setState(() {
               isLoading = false;
             });
