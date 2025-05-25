@@ -83,3 +83,6 @@ The app displays the following information from each article:
 | ![Splash Screen](screenshots/splashscreen.png) | ![Signup Screen](screenshots/signup.png) | ![NewsFeed](screenshots/newsfeed.png) | ![Bookmarks](screenshots/bookmarks.png) | ![Article View](screenshots/article_view.png) |
 
  
+## Google Drive Link
+
+https://drive.google.com/drive/folders/1R3FucmwdUCSvaaCxLBCKPzUXExmVatLu
